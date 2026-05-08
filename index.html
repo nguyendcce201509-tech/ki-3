@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kì 3 fpt</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header row">
+      <div class="logo col-md-2">
+        <img src="/hinh/Screenshot 2026-05-07 163208.png" alt="" />
+      </div>
+      <div class="menu col-md-10">
+        <ul class="menu2">
+          <li class="active"><a href="index.html">Home</a></li>
+
+          <li><a href="#">About</a></li>
+          <li><a href="#">Cars</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr id="g" />
+    <h1>Web của Đỗ Nguyên</h1>
+    <div class="chức-năng">
+      <p id="nhan">Nhấn vào môn bên dưới để lấy tài liệu ↧</p>
+      <ul>
+        <li class="LAB211">
+          <a
+            href="https://drive.google.com/drive/folders/17Sgw8jjQt5NRbrqFxQ1AGHdSbYPuZty3?usp=drive_link"
+            target="_blank"
+            >Môn lab LAB211</a
+          >
+        </li>
+        <li class="JPD113">
+          <a
+            href="https://drive.google.com/drive/folders/1OhgCqUvjDfCqC2AnxgWFJCySflPO5QaB?usp=drive_link"
+            target="_blank"
+            >Môn tiếng Nhật JPD113</a
+          >
+        </li>
+        <li class="MAS291">
+          <a
+            href="https://drive.google.com/drive/folders/1Y26lZ4VVQ-Cs5yQY7DgR8eRENL_Qq6eM?usp=drive_link"
+            target="_blank"
+            >Môn Xác suất thống kê MAS291</a
+          >
+        </li>
+        <li class="DBI202">
+          <a
+            href="https://drive.google.com/drive/folders/1AkKQ9pjayUDXqHJSjkLk3pF10ASimyZd?usp=drive_link"
+            target="_blank"
+            >Môn cơ sở dữ liệu DBI202</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="lich">
+      <div class="box">
+        <h2>📚 Quản lý lịch học tập</h2>
+
+        <!-- Chọn môn -->
+        <label>Chọn môn học:</label>
+
+        <select id="subject">
+          <option value="LAB211">Môn lab LAB211</option>
+
+          <option value="JPD113">Môn tiếng Nhật JPD113</option>
+
+          <option value="MAS291">Môn Xác suất thống kê MAS291</option>
+
+          <option value="DBI202">Môn cơ sở dữ liệu DBI202</option>
+        </select>
+
+        <!-- Chọn loại -->
+        <label>Loại sự kiện:</label>
+
+        <select id="type">
+          <option value="Thuyết trình">Thuyết trình</option>
+
+          <option value="Bài lab">Bài lab</option>
+
+          <option value="Bài test">Bài test</option>
+
+          <option value="Kiểm tra">Kiểm tra</option>
+        </select>
+
+        <!-- Chọn ngày -->
+        <label>Ngày:</label>
+
+        <input type="date" id="date" />
+
+        <button onclick="addSchedule()">Thêm lịch</button>
+
+        <div id="result"></div>
+      </div>
+
+      <script>
+        function addSchedule() {
+          // Lấy dữ liệu
+          const subject = document.getElementById("subject").value;
+
+          const type = document.getElementById("type").value;
+
+          const date = document.getElementById("date").value;
+
+          if (date == "") {
+            alert("Vui lòng chọn ngày");
+
+            return;
+          }
+
+          // Chuyển ngày
+          const eventDate = new Date(date);
+
+          const today = new Date();
+
+          today.setHours(0, 0, 0, 0);
+          eventDate.setHours(0, 0, 0, 0);
+
+          // Tính ngày còn lại
+          const diffTime = eventDate - today;
+
+          const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+          let message = "";
+
+          // Kiểm tra thông báo
+          if (diffDays == 1) {
+            message = "⚠️ Mai có " + type + " môn " + subject;
+
+            alert(message);
+          } else if (diffDays == 0) {
+            message = "📢 Hôm nay có " + type + " môn " + subject;
+          } else if (diffDays > 1) {
+            message =
+              "⏳ " +
+              type +
+              " môn " +
+              subject +
+              " còn " +
+              diffDays +
+              " ngày nữa.";
+          } else {
+            message = "⛔ Sự kiện đã qua.";
+          }
+
+          // Hiển thị ra web
+          document.getElementById("result").innerHTML += `<div class="item">
+
+           <strong>Môn:</strong>
+    ${subject}<br><br>
+
+    <strong>Sự kiện:</strong>
+    ${type}<br><br>
+
+    <strong>Ngày:</strong>
+    ${date}<br><br>
+
+    ${message}<br><br>
+         
+
+   
+
+            </div>`;
+          // Lấy dữ liệu cũ
+          let schedules = JSON.parse(localStorage.getItem("schedules")) || [];
+
+          // Thêm lịch mới
+          schedules.push({
+            subject: subject,
+            type: type,
+            date: date,
+          });
+
+          // Lưu lại
+          addDoc("schedules", JSON.stringify(schedules));
+        }
+
+        // Xin quyền thông báo
+        Notification.requestPermission();
+
+        // Kiểm tra thông báo mỗi ngày
+        function checkNotifications() {
+          // Lấy dữ liệu đã lưu
+          const schedules = JSON.parse(localStorage.getItem("schedules")) || [];
+
+          const today = new Date();
+
+          today.setHours(0, 0, 0, 0);
+
+          schedules.forEach(function (item, index) {
+            const eventDate = new Date(item.date);
+
+            eventDate.setHours(0, 0, 0, 0);
+
+            const diffDays = (eventDate - today) / (1000 * 60 * 60 * 24);
+
+            // Trước 1 ngày
+            if (diffDays == 1) {
+              const message = "⚠️ Mai có " + item.type + " môn " + item.subject;
+
+              // Notification góc màn hình
+              if (Notification.permission === "granted") {
+                new Notification(message);
+              }
+            }
+          });
+        }
+
+        // Chạy khi mở web
+        checkNotifications();
+        // Hiển thị dữ liệu đã lưu khi reload
+        window.onload = function () {
+          const schedules = JSON.parse(localStorage.getItem("schedules")) || [];
+
+          // Sắp xếp ngày gần nhất
+          schedules.sort(function (a, b) {
+            return new Date(a.date) - new Date(b.date);
+          });
+
+          const today = new Date();
+
+          today.setHours(0, 0, 0, 0);
+
+          schedules.forEach(function (item, index) {
+            const eventDate = new Date(item.date);
+
+            eventDate.setHours(0, 0, 0, 0);
+
+            const diffDays = (eventDate - today) / (1000 * 60 * 60 * 24);
+
+            let message = "";
+
+            if (diffDays == 1) {
+              message = "⚠️ Mai có " + item.type + " môn " + item.subject;
+            } else if (diffDays == 0) {
+              message = "📢 Hôm nay có " + item.type + " môn " + item.subject;
+            } else if (diffDays > 1) {
+              message =
+                "⏳ " +
+                item.type +
+                " môn " +
+                item.subject +
+                " còn " +
+                diffDays +
+                " ngày nữa.";
+            } else {
+              message = "⛔ Sự kiện đã qua.";
+            }
+
+            document.getElementById("result").innerHTML += `<div class="item">
+
+      <strong>Môn:</strong>
+      ${item.subject}<br><br>
+
+      <strong>Sự kiện:</strong>
+      ${item.type}<br><br>
+
+      <strong>Ngày:</strong>
+      ${item.date}<br><br>
+
+      ${message}<br><br>
+       <button onclick="editSchedule(${index})">
+        ✏️ Sửa
+      </button>
+
+      <button onclick="deleteSchedule(${index})">
+        ❌ Xóa
+      </button>
+
+    </div>`;
+          });
+        };
+        function deleteSchedule(index) {
+          let schedules = JSON.parse(localStorage.getItem("schedules")) || [];
+
+          schedules.splice(index, 1);
+
+          localStorage.setItem("schedules", JSON.stringify(schedules));
+
+          location.reload();
+        }
+        function editSchedule(index) {
+          let schedules = JSON.parse(localStorage.getItem("schedules")) || [];
+
+          const item = schedules[index];
+
+          const newSubject = prompt("Sửa môn học:", item.subject);
+
+          const newType = prompt("Sửa sự kiện:", item.type);
+
+          const newDate = prompt("Sửa ngày:", item.date);
+
+          schedules[index] = {
+            subject: newSubject,
+            type: newType,
+            date: newDate,
+          };
+
+          localStorage.setItem("schedules", JSON.stringify(schedules));
+
+          location.reload();
+        }
+      </script>
+    </div>
+  </body>
+</html>

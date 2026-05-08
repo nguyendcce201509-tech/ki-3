@@ -1,0 +1,122 @@
+.menu2 {
+  display: flex;
+  gap: 20px;
+}
+.menu2 li {
+  list-style: none;
+}
+.menu2 li a {
+  text-decoration: none;
+}
+.menu {
+  text-align: center;
+  position: relative;
+  left: 60px;
+  top: 10px;
+}
+.header {
+  background-color: white;
+}
+body {
+  background-image: url(/hinh/tải\ xuống.jpg);
+  background-size: cover; /* phủ toàn màn hình */
+  background-position: center; /* căn giữa */
+  background-repeat: no-repeat; /* không lặp */
+  width: 100%;
+}
+.logo img {
+  width: 183px;
+  height: 59px;
+}
+#g {
+  position: relative;
+  bottom: 20px;
+}
+h1 {
+  text-align: center;
+  color: blue;
+}
+.chức-năng ul li a {
+  text-decoration: none;
+  font-size: 30px;
+}
+.chức-năng ul {
+  list-style: none;
+  margin-left: 100px;
+}
+.chức-năng {
+  margin-top: 116px;
+  margin-left: 10px;
+}
+.chức-năng ul li {
+  margin-top: 20px;
+}
+.LAB211 {
+  background-color: rgb(19, 34, 168);
+  margin-right: 60%;
+}
+.JPD113 {
+  background-color: rgb(205, 10, 29);
+  margin-right: 60%;
+}
+.DBI202 {
+  background-color: rgb(162, 190, 20);
+  margin-right: 60%;
+}
+.MAS291 {
+  background-color: rgb(34, 179, 56);
+  margin-right: 60%;
+}
+.chức-năng a {
+  color: antiquewhite;
+}
+.active {
+  background-color: yellow;
+}
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+}
+
+.box {
+  width: 550px;
+  margin: 50px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  font-weight: bold;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.item {
+  background: #eee;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+#nhan {
+  margin-left: 138px;
+  color: rgb(180, 6, 6);
+}
+@media screen and (max-width: 767.98px) {
+}
